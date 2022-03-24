@@ -1,0 +1,90 @@
+{% extends "base.html" %} {% block content %} {% load static %}
+
+<section class="container">
+  <div class="main">
+    <section class="main-header">
+      <img src="{% static 'img/twitter.jpg' %}" class="logo" />
+      <h1>Home</h1>
+    </section>
+    <section class="post_form">
+      <div class="logo">
+        <img
+          src="{% static 'img/63FB34E9-E17C-42C0-BDD1-183CAE3EF4C4_1_105_c.jpeg' %}"
+        />
+      </div>
+      <div class="input_area">
+        <form action="/" method="POST" enctype="multipart/form-data">
+          {% csrf_token %}
+          <input type="text" name="name" placeholder="Your Name" required />
+          <textarea
+            name="body"
+            placeholder="What's Happening?"
+            required
+          ></textarea>
+          <input type="file" name="image" id="choosefile">
+          <input type="submit" value="Tweet" id="tweet">
+          <!-- <div class="bottom-area">
+            <div class="mb-0">
+              <input
+                class="form-control form-control-sm"
+                name="image"
+                type="file"
+                id="border"
+              />
+            </div>
+
+            <button class="btn" type="submit">Tweet</button>
+          </div> -->
+        </form>
+      </div>
+    </section>
+    <section class="posts">
+      <ul>
+        {% for post in posts %}
+        <li>
+          <img
+            class="menu_icon js-menu-icon"
+            src="{% static 'img/option.png' %}"
+          />
+          <div class="menu">
+            <a href="/delete/{{ post.id }}/">Delete</a><br />
+            <a href="/edit/{{post.id}}/">Edit</a>
+          </div>
+          <div class="logo">
+            <img
+              src="{% static 'img/63FB34E9-E17C-42C0-BDD1-183CAE3EF4C4_1_105_c.jpeg' %}"
+            />
+          </div>
+          <div class="name_body">
+            <div class="name">{{ post.name }}</div>
+            <div class="datetime">{{ post.created_at }}</div>
+
+            <p>{{ post.body }}</p>
+
+            <!-- {% if post.image.url %} -->
+            <img class="body-image" src="{{ post.image.url }}" alt="" />
+            <!-- {% endif %} -->
+            <div class="icon_list">
+
+              <!-- <form action="{% url 'like_post' post.pk}" method="POST">
+                {% csrf_token %}
+                <button type="submit" ,name="post_id" ,value="{{ post.id }}"> -->
+                 <a href="/likes/{{post.id}}"> <img src="/static/img/like.png" style="width:30px;" alt="like" /> </a>
+                <!-- </button> -->
+                {{post.like}}
+              </form>
+            </div>
+          </div>
+        </li>
+        {% endfor %}
+      </ul>
+    </section>
+    <script
+      src="https://code.jquery.com/jquery-3.6.0.js"
+      integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk="
+      crossorigin="anonymous"
+    ></script>
+    <script src="{% static 'js/posts.js' %}"></script>
+  </div>
+</section>
+{% endblock %}
