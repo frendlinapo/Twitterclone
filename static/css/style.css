@@ -92,10 +92,12 @@ Post
 
 #tweet {
   background-color: rgb(29, 161, 242);
-  color: #ccc;
+  color: white;
   border: 0;
   padding: 7px;
   border-radius: 10px;
+  width: 20%;
+  font-weight: bold;
 }
 
 #cancel {
@@ -126,7 +128,7 @@ Post
 .posts li {
   position: relative;
   display: flex;
-  border-bottom: 1px solid white;
+  border-bottom: 1px solid #ccc;
   padding: 20px 40px;
   list-style: none;
 }
@@ -188,16 +190,7 @@ Post
     border: 1px solid rgb(197, 199, 201);
 }
 
-.icon_list {
-    display: flex;
-    margin-top: 15px;
-}
 
-.icon_list .like img {
-    width: 25px;
-    margin-right: 10px;
-    cursor: pointer;
-}
 @media screen and (max-width: 500px) {
   .posts li .name_body .name {
     font-size: 20px;
