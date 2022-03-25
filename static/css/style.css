@@ -49,6 +49,7 @@ Post
 .post_form {
   display: flex;
   padding: 10px;
+  border-bottom: 1px solid #ccc;
 }
 
 .post_form input[type="text"] {
